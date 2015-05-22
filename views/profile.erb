@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title><%=session[:username] %></title>
+
+  <!-- CSS  -->
+  <link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+
+  <nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div>
+    <div class="section no-pad-bot">
+      <div class="container">
+        <h3>Welcome <%=session[:username] %></h3>
+        <br><br>
+        <div id="addcontact">
+        	<form method="post" action="/profile">
+        	<div class="row">
+        		<div class="input-field col s6">
+          			<i class="mdi-action-account-circle prefix"></i>
+          			<input id="firstname" type="text" class="validate" name="firstname">
+          			<label for="icon_prefix">First Name</label>
+        		</div>
+        		<div class="input-field col s6">
+        			<i class="mdi-action-account-circle prefix"></i>
+         			<input id="lastname" type="text" class="validate" name="lastname">
+          			<label for="lastname">Last Name</label>
+        		</div>
+        		<div class="input-field col s6">
+        			<i class="mdi-communication-phone prefix"></i>
+          			<input id="phone" type="text" class="validate" name="phone">
+          			<label for="phone">Phone</label>
+        		</div>
+        		<div class="input-field col s6">
+        			<i class="mdi-communication-location-on prefix"></i>
+          			<input placeholder="341 Herbert Macauly, Yaba, Lagos" id="address" type="text" class="validate" name="address">
+          			<label for="address">Address</label>
+        		</div>
+            <div class="input-field col s6">
+              <i class="mdi-action-language prefix"></i>
+                <input placeholder="www.andela.com" id="web" type="text" class="validate" name="website">
+                <label for="web">Website</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-action-store prefix"></i>
+                <input id="cmpny" type="text" class="validate" name="company">
+                <label for="cmpny">Company</label>
+            </div>
+       			<div class="input-field col s6">
+       				<i class="mdi-communication-email prefix"></i>
+          			<input placeholder="JohnSmith@gmail.com" id="email" type="text" class="validate" name="email">
+          			<label for="email">Email</label>
+          			<button class="btn waves-effect waves-light" type="submit" name="action">Create Contact
+              <i class="mdi-content-send right"></i>
+            </button>
+        		</div>
+          </form>
+    		</div>
+    		
+    	</div>
+    </div>
+  </div>
+  	
+
+  	<h4>Contact List</h4>
+    <% if @contacts %>
+      <ul class="collapsible popout">
+        <% @contacts.each do |contact| %>
+      <li>
+        <div class="collapsible-header"><i class="mdi-image-filter-drama"></i>
+          FIRSTNAME <b><%=contact.firstname %></b>
+          LASTNAME <b><%=contact.lastname %></b>
+          PHONE <b><%=contact.phone %></b>
+          ADDRESS <b><%=contact.address %></b>
+          WEBSITE <b><%=contact.website %></b>
+          COMPANY <b><%=contact.company %></b>
+          EMAIL <b><%=contact.email %></b>
+        
+        </div>
+        <div class="collapsible-body grey lighten-1">
+          <form method="post" action="/edit">
+          <div class="row">
+            <div class="input-field col s2">
+                <i class="mdi-action-account-circle prefix"></i>
+                <input type="hidden" name="id" value="<%=contact.id %>">
+                <input id="firstname" type="text" class="validate" name="firstname" value="<%=contact.firstname %>">
+                <label for="icon_prefix">First Name</label>
+            </div>
+            <div class="input-field col s2">
+              <i class="mdi-action-account-circle prefix"></i>
+              <input id="lastname" type="text" class="validate" name="lastname" value="<%=contact.lastname %>">
+                <label for="lastname">Last Name</label>
+            </div>
+            <div class="input-field col s2">
+              <i class="mdi-communication-phone prefix"></i>
+                <input id="phone" type="text" class="validate" name="phone" value="<%=contact.phone %>">
+                <label for="phone">Phone</label>
+            </div>
+            <div class="input-field col s2">
+              <i class="mdi-communication-location-on prefix"></i>
+                <input placeholder="341 Herbert Macauly, Yaba, Lagos" id="address" type="text" class="validate" name="address" value="<%=contact.address %>">
+                <label for="address">Address</label>
+            </div>
+             <div class="input-field col s2">
+              <i class="mdi-action-language prefix"></i>
+                <input placeholder="www.andela.com" id="web" type="text" class="validate" name="website" value="<%=contact.website %>">
+                <label for="web">Website</label>
+            </div>
+            <div class="input-field col s6">
+              <i class="mdi-action-store prefix"></i>
+                <input id="cmpny" type="text" class="validate" name="company" value="<%=contact.company %>">
+                <label for="cmpny">Company</label>
+            </div>
+            <div class="input-field col s2">
+              <i class="mdi-communication-email prefix"></i>
+                <input placeholder="JohnSmith@gmail.com" id="email" type="text" class="validate" name="email" value="<%=contact.email %>">
+                <label for="email">Email</label>
+                <button class="btn waves-effect waves-light" type="submit" name="action">Edit
+              <i class="mdi-content-send right"></i>
+                </button>
+                <button class="btn-floating btn-large waves-effect waves-light red" type="submit" name="delete">
+                  <i class="mdi-content-clear"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </li>
+    <% end %>
+    </ul>
+    <% else %>
+    <p>No contacts</p>
+    <%end%>
+  <div class="container">
+    <div class="section">
+
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college professional software developers working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Home</a></li>
+            <li><a class="white-text" href="#!">Contact Us</a></li>
+            <li><a class="white-text" href="#!">FAQ</a></li>
+            <li><a class="white-text" href="#!">About</a></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Dice Works
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="/js/materialize.js"></script>
+  <script src="/js/init.js"></script>
+  </body>
+</html>

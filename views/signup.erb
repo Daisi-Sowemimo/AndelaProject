@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Signup</title>
+
+  <!-- CSS  -->
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+  <nav class="teal" role="navigation">
+    <div class="nav-wrapper container">
+      <!--<a id="logo-container" href="#" class="brand-logo">Logo</a>Check for LOGO-->
+      <ul class="right hide-on-med-and-down">
+        <li><a href="/">Home</a></li>
+        <li><a href="/signup">Signup</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+
+      <ul id="nav-mobile" class="side-nav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+    </div>
+  </nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center teal-text text-lighten-2">Just fill in your details and you can start managing your contacts</h1>
+        
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="images/world.jpg" alt="Unsplashed background img 2"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <form method="post" action="signup">
+      <div class="row">
+        <div class="input-field col s6">
+          <i class="mdi-action-account-circle prefix"></i>
+          <input id="usrname" type="text" class="validate" name="username" required />
+          <label for="usrname">Username</label>
+        </div>
+        <div class="input-field col s6">
+          <i class="mdi-communication-phone prefix"></i>
+           <input id="phone" type="text" class="validate" name="phone">
+          <label for="phone">Phone</label>
+        </div>
+        <div class="input-field col s6">
+              <i class="mdi-action-lock prefix"></i>
+              <input id="lastname" type="password" class="validate" name="pwd">
+                <label for="lastname">Password</label>
+            </div>
+            
+            <div class="input-field col s6">
+              <i class="mdi-action-lock prefix"></i>
+                <input id="passwrd" type="password" class="validate" name="confirmpwd">
+                <label for="passwrd">Confirm Password</label>
+            </div>
+            <br/><br/>
+            <br/><br/>
+            <br/><br/>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+              <i class="mdi-content-send right"></i>
+            </button>
+      </div>
+    </form>
+
+    </div>
+  </div>
+
+  <footer class="page-footer teal">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Company Bio</h5>
+          <p class="grey-text text-lighten-4">We are a team of college professional software developers working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
+
+        </div>
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Home</a></li>
+            <li><a class="white-text" href="#!">Contact Us</a></li>
+            <li><a class="white-text" href="#!">FAQ</a></li>
+            <li><a class="white-text" href="#!">About</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container">
+      Made by Dice Works  
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
